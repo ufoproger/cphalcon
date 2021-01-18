@@ -34,7 +34,7 @@
 /**
  * Destroyes the prepared ASTs
  */
-void phalcon_orm_destroy_cache(TSRMLS_D) {
+void phalcon_orm_destroy_cache() {
 
 	zend_phalcon_globals *phalcon_globals_ptr = ZEPHIR_VGLOBAL;
 
@@ -54,7 +54,7 @@ void phalcon_orm_destroy_cache(TSRMLS_D) {
 /**
  * Escapes single quotes into database single quotes
  */
-void phalcon_orm_singlequotes(zval *return_value, zval *str TSRMLS_DC) {
+void phalcon_orm_singlequotes(zval *return_value, zval *str) {
 
 	int i;
 	smart_str  escaped_str = {0};
