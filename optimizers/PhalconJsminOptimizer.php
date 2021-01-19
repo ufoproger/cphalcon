@@ -64,7 +64,7 @@ class PhalconJsminOptimizer extends OptimizerAbstract
 		$symbolVariable->setDynamicTypes('string');
 
 		$resolvedParams = $call->getResolvedParams($expression['parameters'], $context, $expression);
-		$context->codePrinter->output('phalcon_jsmin(' . $symbolVariable->getName() . ', ' . $resolvedParams[0] . ' TSRMLS_CC);');
+		$context->codePrinter->output('phalcon_jsmin(' . $symbolVariable->getName() . ', ' . $resolvedParams[0] . ');');
 		return new CompiledExpression('variable', $symbolVariable->getRealName(), $expression);
 	}
 }

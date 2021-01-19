@@ -71,7 +71,7 @@ class PhvoltParseViewOptimizer extends OptimizerAbstract
 		$call->addCallStatusFlag($context);
 
 		$symbol = $context->backend->getVariableCode($symbolVariable);
-		$context->codePrinter->output('ZEPHIR_LAST_CALL_STATUS = phvolt_parse_view(' . $symbol . ', ' . $resolvedParams[0] . ', ' . $resolvedParams[1] . ' TSRMLS_CC);');
+		$context->codePrinter->output('ZEPHIR_LAST_CALL_STATUS = phvolt_parse_view(' . $symbol . ', ' . $resolvedParams[0] . ', ' . $resolvedParams[1] . ');');
 
 		$call->checkTempParameters($context);
 		$call->addCallStatusOrJump($context);

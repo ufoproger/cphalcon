@@ -66,7 +66,7 @@ class PhalconOrmSinglequotesOptimizer extends OptimizerAbstract
 		$resolvedParams = $call->getResolvedParams($expression['parameters'], $context, $expression);
 
 		$symbol = $context->backend->getVariableCode($symbolVariable);
-		$context->codePrinter->output('phalcon_orm_singlequotes(' . $symbol . ', ' . $resolvedParams[0] . ' TSRMLS_CC);');
+		$context->codePrinter->output('phalcon_orm_singlequotes(' . $symbol . ', ' . $resolvedParams[0] . ');');
 
 		return new CompiledExpression('variable', $symbolVariable->getRealName(), $expression);
 	}
