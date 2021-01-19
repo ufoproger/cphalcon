@@ -255,9 +255,9 @@ class Bag implements InjectionAwareInterface, BagInterface, \IteratorAggregate, 
 	 * unset($user["name"]);
 	 *</code>
 	 */
-	public function __unset(string! property) -> boolean
+	public function __unset(string! property) -> void
 	{
-		return this->remove(property);
+		this->remove(property);
 	}
 
 	/**
