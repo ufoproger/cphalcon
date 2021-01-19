@@ -17,12 +17,12 @@
 #define PHP_PHALCON_ZEPVERSION  "0.10.16-6826149172"
 #define PHP_PHALCON_DESCRIPTION "Web framework delivered as a C-extension for PHP"
 
-typedef struct _zephir_struct_db { 
+typedef struct _zephir_struct_db {
 	zend_bool escape_identifiers;
 	zend_bool force_casting;
 } zephir_struct_db;
 
-typedef struct _zephir_struct_orm { 
+typedef struct _zephir_struct_orm {
 	HashTable*  parser_cache;
 	HashTable*  ast_cache;
 	int cache_level;
@@ -70,7 +70,7 @@ ZEND_BEGIN_MODULE_GLOBALS(phalcon)
 	zval *global_true;
 	zval *global_false;
 	zval *global_null;
-	
+
 	zephir_struct_db db;
 
 	zephir_struct_orm orm;

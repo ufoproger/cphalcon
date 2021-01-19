@@ -17,4 +17,4 @@
   +------------------------------------------------------------------------+
 */
 
-int phalcon_db_checktype(zval *return_value, zval *placeholder TSRMLS_DC);
+int phalcon_db_checktype(zval *return_value, zval *placeholder);

@@ -127,7 +127,7 @@ static void phql_parse_with_token(void* phql_parser, int opcode, int parsercode,
 /**
  * Creates an error message when it's triggered by the scanner
  */
-static void phql_scanner_error_msg(phql_parser_status *parser_status, zval **error_msg TSRMLS_DC)
+static void phql_scanner_error_msg(phql_parser_status *parser_status, zval **error_msg)
 {
 
 	char *error = NULL, *error_part;
@@ -172,7 +172,7 @@ static void phql_scanner_error_msg(phql_parser_status *parser_status, zval **err
 /**
  * Executes the internal PHQL parser/tokenizer
  */
-int phql_parse_phql(zval *result, zval *phql TSRMLS_DC)
+int phql_parse_phql(zval *result, zval *phql)
 {
 #if PHP_VERSION_ID < 70000
 	zval *error_msg = NULL;
@@ -183,7 +183,7 @@ int phql_parse_phql(zval *result, zval *phql TSRMLS_DC)
 
 	ZVAL_NULL(result);
 
-	if (phql_internal_parse_phql(&result, Z_STRVAL_P(phql), Z_STRLEN_P(phql), &error_msg TSRMLS_CC) == FAILURE) {
+	if (phql_internal_parse_phql(&result, Z_STRVAL_P(phql), Z_STRLEN_P(phql), &error_msg) == FAILURE) {
 		ZEPHIR_THROW_EXCEPTION_STRW(phalcon_mvc_model_exception_ce, Z_STRVAL_P(error_msg));
 		return FAILURE;
 	}
@@ -194,7 +194,7 @@ int phql_parse_phql(zval *result, zval *phql TSRMLS_DC)
 /**
  * Executes a PHQL parser/tokenizer
  */
-int phql_internal_parse_phql(zval **result, char *phql, unsigned int phql_length, zval **error_msg TSRMLS_DC)
+int phql_internal_parse_phql(zval **result, char *phql, unsigned int phql_length, zval **error_msg)
 {
 	zend_phalcon_globals *phalcon_globals_ptr = ZEPHIR_VGLOBAL;
 	phql_parser_status *parser_status = NULL;
@@ -612,11 +612,11 @@ int phql_internal_parse_phql(zval **result, char *phql, unsigned int phql_length
 			case PHQL_SCANNER_RETCODE_IMPOSSIBLE:
 #if PHP_VERSION_ID < 70000
 				if (!*error_msg) {
-					phql_scanner_error_msg(parser_status, error_msg TSRMLS_CC);
+					phql_scanner_error_msg(parser_status, error_msg);
 				}
 #else
                 if (Z_TYPE_P(*error_msg) == IS_UNDEF) {
-                    phql_scanner_error_msg(parser_status, error_msg TSRMLS_CC);
+                    phql_scanner_error_msg(parser_status, error_msg);
                 }
 #endif
 				status = FAILURE;
