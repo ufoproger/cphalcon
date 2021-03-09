@@ -24,6 +24,7 @@ use Phalcon\Db\Column;
 use Phalcon\Db\RawValue;
 use Phalcon\Db\Adapter\Pdo as PdoAdapter;
 use Phalcon\Db\Exception;
+use Phalcon\Db\ColumnInterface;
 
 /**
  * Phalcon\Db\Adapter\Pdo\Postgresql
@@ -94,7 +95,7 @@ class Postgresql extends PdoAdapter
 	 * );
 	 * </code>
 	 */
-	public function describeColumns(string table, string schema = null) -> <\Phalcon\Db\ColumnInterface[]>
+	public function describeColumns(string table, string schema = null) -> <ColumnInterface[]>
 	{
 		var columns, columnType, field, definition,
 			oldColumn, columnName, charSize, numericSize, numericScale;
@@ -327,7 +328,7 @@ class Postgresql extends PdoAdapter
 	/**
 	 * Modifies a table column based on a definition
 	 */
-	public function modifyColumn(string! tableName, string! schemaName, <\Phalcon\Db\ColumnInterface> column, <\Phalcon\Db\ColumnInterface> currentColumn = null) -> boolean
+	public function modifyColumn(string! tableName, string! schemaName, <ColumnInterface> column, <ColumnInterface> currentColumn = null) -> boolean
 	{
 		var sql,queries,query,exception;
 

@@ -21,6 +21,7 @@ namespace Phalcon\Db\Result;
 
 use Phalcon\Db;
 use Phalcon\Db\ResultInterface;
+use Phalcon\Db\AdapterInterface;
 
 %{
 #include <ext/pdo/php_pdo_driver.h>
