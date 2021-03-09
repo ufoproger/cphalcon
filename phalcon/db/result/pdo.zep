@@ -80,7 +80,7 @@ class Pdo implements ResultInterface
 	 * @param array bindParams
 	 * @param array bindTypes
 	 */
-	public function __construct(<Db\AdapterInterface> connection, <\PDOStatement> result,
+	public function __construct(<AdapterInterface> connection, <\PDOStatement> result,
 		sqlStatement = null, bindParams = null, bindTypes = null)
 	{
 
