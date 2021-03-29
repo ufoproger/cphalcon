@@ -29,34 +29,27 @@ ZEPHIR_INIT_CLASS(Phalcon_Assets_ResourceInterface) {
  * Sets the resource's type.
  */
 ZEPHIR_DOC_METHOD(Phalcon_Assets_ResourceInterface, setType);
-
 /**
  * Gets the resource's type.
  */
 ZEPHIR_DOC_METHOD(Phalcon_Assets_ResourceInterface, getType);
-
 /**
  * Sets if the resource must be filtered or not.
  */
 ZEPHIR_DOC_METHOD(Phalcon_Assets_ResourceInterface, setFilter);
-
 /**
  * Gets if the resource must be filtered or not.
  */
 ZEPHIR_DOC_METHOD(Phalcon_Assets_ResourceInterface, getFilter);
-
 /**
  * Sets extra HTML attributes.
  */
 ZEPHIR_DOC_METHOD(Phalcon_Assets_ResourceInterface, setAttributes);
-
 /**
  * Gets extra HTML attributes.
  */
 ZEPHIR_DOC_METHOD(Phalcon_Assets_ResourceInterface, getAttributes);
-
 /**
  * Gets the resource's key.
  */
 ZEPHIR_DOC_METHOD(Phalcon_Assets_ResourceInterface, getResourceKey);
-

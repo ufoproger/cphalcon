@@ -29,21 +29,17 @@ ZEPHIR_INIT_CLASS(Phalcon_Paginator_AdapterInterface) {
  * Set the current page number
  */
 ZEPHIR_DOC_METHOD(Phalcon_Paginator_AdapterInterface, setCurrentPage);
-
 /**
  * Returns a slice of the resultset to show in the pagination
  *
  * @deprecated will be removed after 4.0
  */
 ZEPHIR_DOC_METHOD(Phalcon_Paginator_AdapterInterface, getPaginate);
-
 /**
  * Set current rows limit
  */
 ZEPHIR_DOC_METHOD(Phalcon_Paginator_AdapterInterface, setLimit);
-
 /**
  * Get current rows limit
  */
 ZEPHIR_DOC_METHOD(Phalcon_Paginator_AdapterInterface, getLimit);
-

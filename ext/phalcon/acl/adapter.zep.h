@@ -11,21 +11,36 @@ PHP_METHOD(Phalcon_Acl_Adapter, getEventsManager);
 PHP_METHOD(Phalcon_Acl_Adapter, setDefaultAction);
 PHP_METHOD(Phalcon_Acl_Adapter, getDefaultAction);
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_acl_adapter_getactiverole, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_acl_adapter_getactiveresource, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_acl_adapter_getactiveaccess, 0, 0, IS_STRING, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_acl_adapter_seteventsmanager, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, eventsManager, Phalcon\\Events\\ManagerInterface, 0)
 ZEND_END_ARG_INFO()
 
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_acl_adapter_geteventsmanager, 0, 0, Phalcon\\Events\\ManagerInterface, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_acl_adapter_setdefaultaction, 0, 0, 1)
-	ZEND_ARG_INFO(0, defaultAccess)
+	ZEND_ARG_TYPE_INFO(0, defaultAccess, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_acl_adapter_getdefaultaction, 0, 0, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(phalcon_acl_adapter_method_entry) {
-	PHP_ME(Phalcon_Acl_Adapter, getActiveRole, NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(Phalcon_Acl_Adapter, getActiveResource, NULL, ZEND_ACC_PUBLIC)
-	PHP_ME(Phalcon_Acl_Adapter, getActiveAccess, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Acl_Adapter, getActiveRole, arginfo_phalcon_acl_adapter_getactiverole, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Acl_Adapter, getActiveResource, arginfo_phalcon_acl_adapter_getactiveresource, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Acl_Adapter, getActiveAccess, arginfo_phalcon_acl_adapter_getactiveaccess, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Acl_Adapter, setEventsManager, arginfo_phalcon_acl_adapter_seteventsmanager, ZEND_ACC_PUBLIC)
-	PHP_ME(Phalcon_Acl_Adapter, getEventsManager, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Acl_Adapter, getEventsManager, arginfo_phalcon_acl_adapter_geteventsmanager, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Acl_Adapter, setDefaultAction, arginfo_phalcon_acl_adapter_setdefaultaction, ZEND_ACC_PUBLIC)
-	PHP_ME(Phalcon_Acl_Adapter, getDefaultAction, NULL, ZEND_ACC_PUBLIC)
+	PHP_ME(Phalcon_Acl_Adapter, getDefaultAction, arginfo_phalcon_acl_adapter_getdefaultaction, ZEND_ACC_PUBLIC)
 	PHP_FE_END
 };

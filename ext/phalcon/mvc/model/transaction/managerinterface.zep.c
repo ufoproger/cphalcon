@@ -29,22 +29,18 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Model_Transaction_ManagerInterface) {
  * Checks whether manager has an active transaction
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_Transaction_ManagerInterface, has);
-
 /**
  * Returns a new \Phalcon\Mvc\Model\Transaction or an already created once
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_Transaction_ManagerInterface, get);
-
 /**
  * Rollbacks active transactions within the manager
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_Transaction_ManagerInterface, rollbackPendent);
-
 /**
  * Commits active transactions within the manager
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_Transaction_ManagerInterface, commit);
-
 /**
  * Rollbacks active transactions within the manager
  * Collect will remove transaction from the manager
@@ -52,19 +48,15 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_Transaction_ManagerInterface, commit);
  * @param boolean collect
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_Transaction_ManagerInterface, rollback);
-
 /**
  * Notifies the manager about a rollbacked transaction
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_Transaction_ManagerInterface, notifyRollback);
-
 /**
  * Notifies the manager about a committed transaction
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_Transaction_ManagerInterface, notifyCommit);
-
 /**
  * Remove all the transactions from the manager
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_Transaction_ManagerInterface, collectTransactions);
-

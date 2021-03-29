@@ -12,7 +12,6 @@
 #include <Zend/zend_interfaces.h>
 
 #include "kernel/main.h"
-#include "ext/spl/spl_iterators.h"
 #include "kernel/memory.h"
 #include "kernel/object.h"
 #include "kernel/array.h"
@@ -76,11 +75,11 @@ ZEPHIR_INIT_CLASS(Phalcon_Registry) {
 
 	ZEPHIR_REGISTER_CLASS(Phalcon, Registry, phalcon, registry, phalcon_registry_method_entry, ZEND_ACC_FINAL_CLASS);
 
-	zend_declare_property_null(phalcon_registry_ce, SL("_data"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_registry_ce, SL("_data"), ZEND_ACC_PROTECTED);
 
-	zend_class_implements(phalcon_registry_ce TSRMLS_CC, 1, zend_ce_arrayaccess);
-	zend_class_implements(phalcon_registry_ce TSRMLS_CC, 1, spl_ce_Countable);
-	zend_class_implements(phalcon_registry_ce TSRMLS_CC, 1, zend_ce_iterator);
+	zend_class_implements(phalcon_registry_ce, 1, zend_ce_arrayaccess);
+	zend_class_implements(phalcon_registry_ce, 1, zend_ce_countable);
+	zend_class_implements(phalcon_registry_ce, 1, zend_ce_iterator);
 	return SUCCESS;
 
 }
@@ -90,13 +89,18 @@ ZEPHIR_INIT_CLASS(Phalcon_Registry) {
  */
 PHP_METHOD(Phalcon_Registry, __construct) {
 
-	zval *_0;
+	zval _0;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&_0);
+
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_INIT_VAR(_0);
-	array_init(_0);
-	zephir_update_property_this(getThis(), SL("_data"), _0 TSRMLS_CC);
+	ZEPHIR_INIT_VAR(&_0);
+	array_init(&_0);
+	zephir_update_property_zval(this_ptr, ZEND_STRL("_data"), &_0);
 	ZEPHIR_MM_RESTORE();
 
 }
@@ -106,14 +110,26 @@ PHP_METHOD(Phalcon_Registry, __construct) {
  */
 PHP_METHOD(Phalcon_Registry, offsetExists) {
 
-	zval *offset, *_0;
+	zval *offset, offset_sub, _0;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &offset);
+	ZVAL_UNDEF(&offset_sub);
+	ZVAL_UNDEF(&_0);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ZVAL(offset)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
+
+	zephir_fetch_params_without_memory_grow(1, 0, &offset);
 
 
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_data"), PH_NOISY_CC);
-	RETURN_BOOL(zephir_array_isset(_0, offset));
+	zephir_read_property(&_0, this_ptr, ZEND_STRL("_data"), PH_NOISY_CC | PH_READONLY);
+	RETURN_BOOL(zephir_array_isset(&_0, offset));
 
 }
 
@@ -122,15 +138,28 @@ PHP_METHOD(Phalcon_Registry, offsetExists) {
  */
 PHP_METHOD(Phalcon_Registry, offsetGet) {
 
-	zval *offset, *_0, *_1;
+	zval *offset, offset_sub, _0, _1;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &offset);
+	ZVAL_UNDEF(&offset_sub);
+	ZVAL_UNDEF(&_0);
+	ZVAL_UNDEF(&_1);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ZVAL(offset)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
+
+	zephir_fetch_params_without_memory_grow(1, 0, &offset);
 
 
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_data"), PH_NOISY_CC);
-	zephir_array_fetch(&_1, _0, offset, PH_NOISY | PH_READONLY, "phalcon/registry.zep", 98 TSRMLS_CC);
-	RETURN_CTORW(_1);
+	zephir_read_property(&_0, this_ptr, ZEND_STRL("_data"), PH_NOISY_CC | PH_READONLY);
+	zephir_array_fetch(&_1, &_0, offset, PH_NOISY | PH_READONLY, "phalcon/registry.zep", 98);
+	RETURN_CTORW(&_1);
 
 }
 
@@ -139,13 +168,26 @@ PHP_METHOD(Phalcon_Registry, offsetGet) {
  */
 PHP_METHOD(Phalcon_Registry, offsetSet) {
 
-	zval *offset, *value;
+	zval *offset, offset_sub, *value, value_sub;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 2, 0, &offset, &value);
+	ZVAL_UNDEF(&offset_sub);
+	ZVAL_UNDEF(&value_sub);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_ZVAL(offset)
+		Z_PARAM_ZVAL(value)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
+
+	zephir_fetch_params_without_memory_grow(2, 0, &offset, &value);
 
 
 
-	zephir_update_property_array(this_ptr, SL("_data"), offset, value TSRMLS_CC);
+	zephir_update_property_array(this_ptr, SL("_data"), offset, value);
 
 }
 
@@ -154,13 +196,25 @@ PHP_METHOD(Phalcon_Registry, offsetSet) {
  */
 PHP_METHOD(Phalcon_Registry, offsetUnset) {
 
-	zval *offset, *_0;
+	zval *offset, offset_sub, _0;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 0, &offset);
+	ZVAL_UNDEF(&offset_sub);
+	ZVAL_UNDEF(&_0);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ZVAL(offset)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
+
+	zephir_fetch_params_without_memory_grow(1, 0, &offset);
 
 
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_data"), PH_NOISY_CC);
+	zephir_read_property(&_0, this_ptr, ZEND_STRL("_data"), PH_NOISY_CC | PH_READONLY);
 	zephir_array_unset(&_0, offset, PH_SEPARATE);
 
 }
@@ -170,11 +224,15 @@ PHP_METHOD(Phalcon_Registry, offsetUnset) {
  */
 PHP_METHOD(Phalcon_Registry, count) {
 
-	zval *_0;
+	zval _0;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&_0);
 
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_data"), PH_NOISY_CC);
-	RETURN_LONG(zephir_fast_count_int(_0 TSRMLS_CC));
+
+	zephir_read_property(&_0, this_ptr, ZEND_STRL("_data"), PH_NOISY_CC | PH_READONLY);
+	RETURN_LONG(zephir_fast_count_int(&_0));
 
 }
 
@@ -183,15 +241,20 @@ PHP_METHOD(Phalcon_Registry, count) {
  */
 PHP_METHOD(Phalcon_Registry, next) {
 
-	zval *_0;
+	zval _0;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&_0);
+
 
 	ZEPHIR_MM_GROW();
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_data"), PH_NOISY_CC);
-	ZEPHIR_MAKE_REF(_0);
-	ZEPHIR_CALL_FUNCTION(NULL, "next", NULL, 431, _0);
-	ZEPHIR_UNREF(_0);
+	zephir_read_property(&_0, this_ptr, ZEND_STRL("_data"), PH_NOISY_CC | PH_READONLY);
+	ZEPHIR_MAKE_REF(&_0);
+	ZEPHIR_CALL_FUNCTION(NULL, "next", NULL, 346, &_0);
+	ZEPHIR_UNREF(&_0);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -202,15 +265,18 @@ PHP_METHOD(Phalcon_Registry, next) {
  */
 PHP_METHOD(Phalcon_Registry, key) {
 
-	zval *_0;
+	zval _0;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&_0);
+
 
 	ZEPHIR_MM_GROW();
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_data"), PH_NOISY_CC);
-	ZEPHIR_MAKE_REF(_0);
-	ZEPHIR_RETURN_CALL_FUNCTION("key", NULL, 432, _0);
-	ZEPHIR_UNREF(_0);
+	zephir_read_property(&_0, this_ptr, ZEND_STRL("_data"), PH_NOISY_CC | PH_READONLY);
+	ZEPHIR_RETURN_CALL_FUNCTION("key", NULL, 347, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -221,15 +287,20 @@ PHP_METHOD(Phalcon_Registry, key) {
  */
 PHP_METHOD(Phalcon_Registry, rewind) {
 
-	zval *_0;
+	zval _0;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&_0);
+
 
 	ZEPHIR_MM_GROW();
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_data"), PH_NOISY_CC);
-	ZEPHIR_MAKE_REF(_0);
-	ZEPHIR_CALL_FUNCTION(NULL, "reset", NULL, 433, _0);
-	ZEPHIR_UNREF(_0);
+	zephir_read_property(&_0, this_ptr, ZEND_STRL("_data"), PH_NOISY_CC | PH_READONLY);
+	ZEPHIR_MAKE_REF(&_0);
+	ZEPHIR_CALL_FUNCTION(NULL, "reset", NULL, 348, &_0);
+	ZEPHIR_UNREF(&_0);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -240,17 +311,21 @@ PHP_METHOD(Phalcon_Registry, rewind) {
  */
 PHP_METHOD(Phalcon_Registry, valid) {
 
-	zval *_0, *_1 = NULL;
+	zval _0, _1;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&_0);
+	ZVAL_UNDEF(&_1);
+
 
 	ZEPHIR_MM_GROW();
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_data"), PH_NOISY_CC);
-	ZEPHIR_MAKE_REF(_0);
-	ZEPHIR_CALL_FUNCTION(&_1, "key", NULL, 432, _0);
-	ZEPHIR_UNREF(_0);
+	zephir_read_property(&_0, this_ptr, ZEND_STRL("_data"), PH_NOISY_CC | PH_READONLY);
+	ZEPHIR_CALL_FUNCTION(&_1, "key", NULL, 347, &_0);
 	zephir_check_call_status();
-	RETURN_MM_BOOL(Z_TYPE_P(_1) != IS_NULL);
+	RETURN_MM_BOOL(Z_TYPE_P(&_1) != IS_NULL);
 
 }
 
@@ -259,15 +334,18 @@ PHP_METHOD(Phalcon_Registry, valid) {
  */
 PHP_METHOD(Phalcon_Registry, current) {
 
-	zval *_0;
+	zval _0;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&_0);
+
 
 	ZEPHIR_MM_GROW();
 
-	_0 = zephir_fetch_nproperty_this(this_ptr, SL("_data"), PH_NOISY_CC);
-	ZEPHIR_MAKE_REF(_0);
-	ZEPHIR_RETURN_CALL_FUNCTION("current", NULL, 434, _0);
-	ZEPHIR_UNREF(_0);
+	zephir_read_property(&_0, this_ptr, ZEND_STRL("_data"), PH_NOISY_CC | PH_READONLY);
+	ZEPHIR_RETURN_CALL_FUNCTION("current", NULL, 349, &_0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -278,26 +356,40 @@ PHP_METHOD(Phalcon_Registry, current) {
  */
 PHP_METHOD(Phalcon_Registry, __set) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *key_param = NULL, *value;
-	zval *key = NULL;
+	zval *key_param = NULL, *value, value_sub;
+	zval key;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&key);
+	ZVAL_UNDEF(&value_sub);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(2, 2)
+		Z_PARAM_STR(key)
+		Z_PARAM_ZVAL(value)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 2, 0, &key_param, &value);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string"));
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
-		zephir_get_strval(key, key_param);
+		zephir_get_strval(&key, key_param);
 	} else {
-		ZEPHIR_INIT_VAR(key);
-		ZVAL_EMPTY_STRING(key);
+		ZEPHIR_INIT_VAR(&key);
+		ZVAL_EMPTY_STRING(&key);
 	}
 
 
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "offsetset", NULL, 435, key, value);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "offsetset", NULL, 350, &key, value);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 
@@ -308,26 +400,38 @@ PHP_METHOD(Phalcon_Registry, __set) {
  */
 PHP_METHOD(Phalcon_Registry, __get) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *key_param = NULL;
-	zval *key = NULL;
+	zval key;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&key);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(key)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &key_param);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string"));
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
-		zephir_get_strval(key, key_param);
+		zephir_get_strval(&key, key_param);
 	} else {
-		ZEPHIR_INIT_VAR(key);
-		ZVAL_EMPTY_STRING(key);
+		ZEPHIR_INIT_VAR(&key);
+		ZVAL_EMPTY_STRING(&key);
 	}
 
 
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "offsetget", NULL, 436, key);
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "offsetget", NULL, 351, &key);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -335,26 +439,38 @@ PHP_METHOD(Phalcon_Registry, __get) {
 
 PHP_METHOD(Phalcon_Registry, __isset) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *key_param = NULL;
-	zval *key = NULL;
+	zval key;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&key);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(key)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &key_param);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string"));
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
-		zephir_get_strval(key, key_param);
+		zephir_get_strval(&key, key_param);
 	} else {
-		ZEPHIR_INIT_VAR(key);
-		ZVAL_EMPTY_STRING(key);
+		ZEPHIR_INIT_VAR(&key);
+		ZVAL_EMPTY_STRING(&key);
 	}
 
 
-	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "offsetexists", NULL, 437, key);
+	ZEPHIR_RETURN_CALL_METHOD(this_ptr, "offsetexists", NULL, 352, &key);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -362,26 +478,38 @@ PHP_METHOD(Phalcon_Registry, __isset) {
 
 PHP_METHOD(Phalcon_Registry, __unset) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zval *key_param = NULL;
-	zval *key = NULL;
+	zval key;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&key);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_STR(key)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &key_param);
 
 	if (UNEXPECTED(Z_TYPE_P(key_param) != IS_STRING && Z_TYPE_P(key_param) != IS_NULL)) {
-		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be a string") TSRMLS_CC);
+		zephir_throw_exception_string(spl_ce_InvalidArgumentException, SL("Parameter 'key' must be of the type string"));
 		RETURN_MM_NULL();
 	}
 	if (EXPECTED(Z_TYPE_P(key_param) == IS_STRING)) {
-		zephir_get_strval(key, key_param);
+		zephir_get_strval(&key, key_param);
 	} else {
-		ZEPHIR_INIT_VAR(key);
-		ZVAL_EMPTY_STRING(key);
+		ZEPHIR_INIT_VAR(&key);
+		ZVAL_EMPTY_STRING(&key);
 	}
 
 
-	ZEPHIR_CALL_METHOD(NULL, this_ptr, "offsetunset", NULL, 438, key);
+	ZEPHIR_CALL_METHOD(NULL, this_ptr, "offsetunset", NULL, 353, &key);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

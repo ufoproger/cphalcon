@@ -29,4 +29,3 @@ ZEPHIR_INIT_CLASS(Phalcon_Acl_RoleAware) {
  * Returns role name
  */
 ZEPHIR_DOC_METHOD(Phalcon_Acl_RoleAware, getRoleName);
-

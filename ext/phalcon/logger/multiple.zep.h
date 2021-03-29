@@ -19,6 +19,15 @@ PHP_METHOD(Phalcon_Logger_Multiple, notice);
 PHP_METHOD(Phalcon_Logger_Multiple, warning);
 PHP_METHOD(Phalcon_Logger_Multiple, alert);
 
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_getloggers, 0, 0, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_getformatter, 0, 0, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_getloglevel, 0, 0, 0)
+ZEND_END_ARG_INFO()
+
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_push, 0, 0, 1)
 	ZEND_ARG_OBJ_INFO(0, logger, Phalcon\\Logger\\AdapterInterface, 0)
 ZEND_END_ARG_INFO()
@@ -28,7 +37,7 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_setformatter, 0, 0, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_setloglevel, 0, 0, 1)
-	ZEND_ARG_INFO(0, level)
+	ZEND_ARG_TYPE_INFO(0, level, IS_LONG, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_log, 0, 0, 1)
@@ -38,49 +47,61 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_log, 0, 0, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_critical, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
 	ZEND_ARG_ARRAY_INFO(0, context, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_emergency, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
 	ZEND_ARG_ARRAY_INFO(0, context, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_debug, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
 	ZEND_ARG_ARRAY_INFO(0, context, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_error, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
 	ZEND_ARG_ARRAY_INFO(0, context, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_info, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
 	ZEND_ARG_ARRAY_INFO(0, context, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_notice, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
 	ZEND_ARG_ARRAY_INFO(0, context, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_warning, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
 	ZEND_ARG_ARRAY_INFO(0, context, 1)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_multiple_alert, 0, 0, 1)
-	ZEND_ARG_INFO(0, message)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
 	ZEND_ARG_ARRAY_INFO(0, context, 1)
 ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(phalcon_logger_multiple_method_entry) {
+#if PHP_VERSION_ID >= 80000
+	PHP_ME(Phalcon_Logger_Multiple, getLoggers, arginfo_phalcon_logger_multiple_getloggers, ZEND_ACC_PUBLIC)
+#else
 	PHP_ME(Phalcon_Logger_Multiple, getLoggers, NULL, ZEND_ACC_PUBLIC)
+#endif
+#if PHP_VERSION_ID >= 80000
+	PHP_ME(Phalcon_Logger_Multiple, getFormatter, arginfo_phalcon_logger_multiple_getformatter, ZEND_ACC_PUBLIC)
+#else
 	PHP_ME(Phalcon_Logger_Multiple, getFormatter, NULL, ZEND_ACC_PUBLIC)
+#endif
+#if PHP_VERSION_ID >= 80000
+	PHP_ME(Phalcon_Logger_Multiple, getLogLevel, arginfo_phalcon_logger_multiple_getloglevel, ZEND_ACC_PUBLIC)
+#else
 	PHP_ME(Phalcon_Logger_Multiple, getLogLevel, NULL, ZEND_ACC_PUBLIC)
+#endif
 	PHP_ME(Phalcon_Logger_Multiple, push, arginfo_phalcon_logger_multiple_push, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Logger_Multiple, setFormatter, arginfo_phalcon_logger_multiple_setformatter, ZEND_ACC_PUBLIC)
 	PHP_ME(Phalcon_Logger_Multiple, setLogLevel, arginfo_phalcon_logger_multiple_setloglevel, ZEND_ACC_PUBLIC)

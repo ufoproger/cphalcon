@@ -4,11 +4,11 @@ extern zend_class_entry *phalcon_mvc_entityinterface_ce;
 ZEPHIR_INIT_CLASS(Phalcon_Mvc_EntityInterface);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_entityinterface_readattribute, 0, 0, 1)
-	ZEND_ARG_INFO(0, attribute)
+	ZEND_ARG_TYPE_INFO(0, attribute, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_entityinterface_writeattribute, 0, 0, 2)
-	ZEND_ARG_INFO(0, attribute)
+	ZEND_ARG_TYPE_INFO(0, attribute, IS_STRING, 0)
 	ZEND_ARG_INFO(0, value)
 ZEND_END_ARG_INFO()
 

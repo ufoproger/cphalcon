@@ -5,10 +5,10 @@ ZEPHIR_INIT_CLASS(Phalcon_Logger_Formatter_Json);
 
 PHP_METHOD(Phalcon_Logger_Formatter_Json, format);
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_logger_formatter_json_format, 0, 0, 3)
-	ZEND_ARG_INFO(0, message)
-	ZEND_ARG_INFO(0, type)
-	ZEND_ARG_INFO(0, timestamp)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_logger_formatter_json_format, 0, 3, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, message, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, type, IS_LONG, 0)
+	ZEND_ARG_TYPE_INFO(0, timestamp, IS_LONG, 0)
 	ZEND_ARG_INFO(0, context)
 ZEND_END_ARG_INFO()
 

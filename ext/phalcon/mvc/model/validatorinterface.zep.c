@@ -34,7 +34,6 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Model_ValidatorInterface) {
  * @return array
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ValidatorInterface, getMessages);
-
 /**
  * Executes the validator
  *
@@ -42,4 +41,3 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ValidatorInterface, getMessages);
  * @return boolean
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ValidatorInterface, validate);
-

@@ -6,12 +6,12 @@ ZEPHIR_INIT_CLASS(Phalcon_Validation_Validator_CreditCard);
 PHP_METHOD(Phalcon_Validation_Validator_CreditCard, validate);
 PHP_METHOD(Phalcon_Validation_Validator_CreditCard, verifyByLuhnAlgorithm);
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_validation_validator_creditcard_validate, 0, 0, 2)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_validator_creditcard_validate, 0, 2, _IS_BOOL, 0)
 	ZEND_ARG_OBJ_INFO(0, validation, Phalcon\\Validation, 0)
-	ZEND_ARG_INFO(0, field)
+	ZEND_ARG_TYPE_INFO(0, field, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_validation_validator_creditcard_verifybyluhnalgorithm, 0, 0, 1)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_validation_validator_creditcard_verifybyluhnalgorithm, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_INFO(0, number)
 ZEND_END_ARG_INFO()
 

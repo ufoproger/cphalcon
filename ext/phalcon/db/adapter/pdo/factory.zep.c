@@ -14,6 +14,7 @@
 #include "kernel/main.h"
 #include "kernel/fcall.h"
 #include "kernel/memory.h"
+#include "kernel/object.h"
 
 
 /**
@@ -46,18 +47,30 @@ ZEPHIR_INIT_CLASS(Phalcon_Db_Adapter_Pdo_Factory) {
  */
 PHP_METHOD(Phalcon_Db_Adapter_Pdo_Factory, load) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *config, *_0;
+	zval *config, config_sub, _0;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&config_sub);
+	ZVAL_UNDEF(&_0);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ZVAL(config)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &config);
 
 
 
-	ZEPHIR_INIT_VAR(_0);
-	ZVAL_STRING(_0, "Phalcon\\Db\\Adapter\\Pdo", ZEPHIR_TEMP_PARAM_COPY);
-	ZEPHIR_RETURN_CALL_SELF("loadclass", NULL, 0, _0, config);
-	zephir_check_temp_parameter(_0);
+	ZEPHIR_INIT_VAR(&_0);
+	ZVAL_STRING(&_0, "Phalcon\\Db\\Adapter\\Pdo");
+	ZEPHIR_RETURN_CALL_SELF("loadclass", NULL, 0, &_0, config);
 	zephir_check_call_status();
 	RETURN_MM();
 

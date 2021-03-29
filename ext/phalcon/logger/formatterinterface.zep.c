@@ -34,4 +34,3 @@ ZEPHIR_INIT_CLASS(Phalcon_Logger_FormatterInterface) {
  * @param array $context
  */
 ZEPHIR_DOC_METHOD(Phalcon_Logger_FormatterInterface, format);
-

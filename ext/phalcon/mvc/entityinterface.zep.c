@@ -32,7 +32,6 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_EntityInterface) {
  * @return mixed
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_EntityInterface, readAttribute);
-
 /**
  * Writes an attribute value by its name
  *
@@ -40,4 +39,3 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_EntityInterface, readAttribute);
  * @param mixed value
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_EntityInterface, writeAttribute);
-

@@ -33,7 +33,6 @@ ZEPHIR_INIT_CLASS(Phalcon_Translate_AdapterInterface) {
  * @return	string
  */
 ZEPHIR_DOC_METHOD(Phalcon_Translate_AdapterInterface, t);
-
 /**
  * Returns the translation related to the given key
  *
@@ -42,9 +41,7 @@ ZEPHIR_DOC_METHOD(Phalcon_Translate_AdapterInterface, t);
  * @return	string
  */
 ZEPHIR_DOC_METHOD(Phalcon_Translate_AdapterInterface, query);
-
 /**
  * Check whether is defined a translation key in the internal array
  */
 ZEPHIR_DOC_METHOD(Phalcon_Translate_AdapterInterface, exists);
-

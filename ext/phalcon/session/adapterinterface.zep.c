@@ -29,64 +29,51 @@ ZEPHIR_INIT_CLASS(Phalcon_Session_AdapterInterface) {
  * Starts session, optionally using an adapter
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, start);
-
 /**
  * Sets session options
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, setOptions);
-
 /**
  * Get internal options
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, getOptions);
-
 /**
  * Gets a session variable from an application context
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, get);
-
 /**
  * Sets a session variable in an application context
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, set);
-
 /**
  * Check whether a session variable is set in an application context
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, has);
-
 /**
  * Removes a session variable from an application context
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, remove);
-
 /**
  * Returns active session id
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, getId);
-
 /**
  * Check whether the session has been started
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, isStarted);
-
 /**
  * Destroys the active session
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, destroy);
-
 /**
  * Regenerate session's id
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, regenerateId);
-
 /**
  * Set session name
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, setName);
-
 /**
  * Get session name
  */
 ZEPHIR_DOC_METHOD(Phalcon_Session_AdapterInterface, getName);
-

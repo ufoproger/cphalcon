@@ -24,4 +24,3 @@ ZEPHIR_INIT_CLASS(Phalcon_FactoryInterface) {
  * @param \Phalcon\Config|array config
  */
 ZEPHIR_DOC_METHOD(Phalcon_FactoryInterface, load);
-

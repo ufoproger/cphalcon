@@ -1,29 +1,21 @@
-
-/*
-  +------------------------------------------------------------------------+
-  | Zephir Language                                                        |
-  +------------------------------------------------------------------------+
-  | Copyright (c) 2011-2017 Zephir Team (http://www.zephir-lang.com)       |
-  +------------------------------------------------------------------------+
-  | This source file is subject to the New BSD License that is bundled     |
-  | with this package in the file docs/LICENSE.txt.                        |
-  |                                                                        |
-  | If you did not receive a copy of the license and are unable to         |
-  | obtain it through the world-wide-web, please send an email             |
-  | to license@zephir-lang.com so we can send you a copy immediately.      |
-  +------------------------------------------------------------------------+
-  | Authors: Andres Gutierrez <andres@zephir-lang.com>                     |
-  |          Eduar Carvajal <eduar@zephir-lang.com>                        |
-  |          Vladimir Kolesnikov <vladimir@extrememember.com>              |
-  +------------------------------------------------------------------------+
-*/
+/**
+ * This file is part of the Zephir.
+ *
+ * (c) Phalcon Team <team@zephir-lang.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code. If you did not receive
+ * a copy of the license it is available through the world-wide-web at the
+ * following url: https://docs.zephir-lang.com/en/latest/license
+ */
 
 #ifndef ZEPHIR_RELEASE
 #if defined(linux) || defined(DARWIN) || defined(__APPLE__)
 
 #include <execinfo.h>
 #include <Zend/zend.h>
-#include <ext/standard/php_smart_str.h>
+#include <ext/standard/php_smart_string.h>
+#include <zend_smart_str.h>
 
 /**
  * A buffer for backtrace. It is better to have it allocated statically
@@ -37,9 +29,7 @@ void zephir_print_backtrace(void)
 	int stack_size       = backtrace(backtrace_buf, sizeof(backtrace_buf) / sizeof(void*));
 	char **stack_symbols = backtrace_symbols(backtrace_buf, stack_size);
 	char buf[50];
-	smart_str s;
-
-	s.c = NULL;
+	smart_str s = {0};
 
 	for (i = 0; i < stack_size; ++i) {
 		snprintf(buf, sizeof(buf), "#%d  %p [", i, backtrace_buf[i]);
@@ -50,7 +40,7 @@ void zephir_print_backtrace(void)
 
 	smart_str_0(&s);
 
-	fprintf(stderr, "%s\n", s.c);
+	fprintf(stderr, "%s\n", ZSTR_VAL(s.s));
 	smart_str_free(&s);
 }
 

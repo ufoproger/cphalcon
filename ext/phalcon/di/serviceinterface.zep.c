@@ -31,31 +31,26 @@ ZEPHIR_INIT_CLASS(Phalcon_Di_ServiceInterface) {
  * @param string
  */
 ZEPHIR_DOC_METHOD(Phalcon_Di_ServiceInterface, getName);
-
 /**
  * Sets if the service is shared or not
  */
 ZEPHIR_DOC_METHOD(Phalcon_Di_ServiceInterface, setShared);
-
 /**
  * Check whether the service is shared or not
  */
 ZEPHIR_DOC_METHOD(Phalcon_Di_ServiceInterface, isShared);
-
 /**
  * Set the service definition
  *
  * @param mixed definition
  */
 ZEPHIR_DOC_METHOD(Phalcon_Di_ServiceInterface, setDefinition);
-
 /**
  * Returns the service definition
  *
  * @return mixed
  */
 ZEPHIR_DOC_METHOD(Phalcon_Di_ServiceInterface, getDefinition);
-
 /**
  * Resolves the service
  *
@@ -64,14 +59,11 @@ ZEPHIR_DOC_METHOD(Phalcon_Di_ServiceInterface, getDefinition);
  * @return mixed
  */
 ZEPHIR_DOC_METHOD(Phalcon_Di_ServiceInterface, resolve);
-
 /**
  * Changes a parameter in the definition without resolve the service
  */
 ZEPHIR_DOC_METHOD(Phalcon_Di_ServiceInterface, setParameter);
-
 /**
  * Restore the internal state of a service
  */
 ZEPHIR_DOC_METHOD(Phalcon_Di_ServiceInterface, __set_state);
-

@@ -1,18 +1,13 @@
-
-/*
-  +------------------------------------------------------------------------+
-  | Zephir Language                                                        |
-  +------------------------------------------------------------------------+
-  | Copyright (c) 2011-2017 Zephir Team  (http://www.zephir-lang.com)      |
-  +------------------------------------------------------------------------+
-  | This source file is subject to the New BSD License that is bundled     |
-  | with this package in the file docs/LICENSE.txt.                        |
-  |                                                                        |
-  | If you did not receive a copy of the license and are unable to         |
-  | obtain it through the world-wide-web, please send an email             |
-  | to license@zephir-lang.com so we can send you a copy immediately.      |
-  +------------------------------------------------------------------------+
-*/
+/**
+ * This file is part of the Zephir.
+ *
+ * (c) Phalcon Team <team@zephir-lang.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code. If you did not receive
+ * a copy of the license it is available through the world-wide-web at the
+ * following url: https://docs.zephir-lang.com/en/latest/license
+ */
 
 #ifndef ZEPHIR_KERNEL_TIME_H
 #define ZEPHIR_KERNEL_TIME_H
@@ -24,7 +19,7 @@
 
 void zephir_time(zval *return_value);
 #ifdef HAVE_GETTIMEOFDAY
-void zephir_microtime(zval *return_value, zval *get_as_float TSRMLS_DC);
+void zephir_microtime(zval *return_value, zval *get_as_float);
 #endif
 
 #endif /* ZEPHIR_KERNEL_TIME_H */

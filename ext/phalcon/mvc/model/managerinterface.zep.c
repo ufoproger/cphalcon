@@ -29,77 +29,62 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Model_ManagerInterface) {
  * Initializes a model in the model manager
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, initialize);
-
 /**
  * Sets the mapped source for a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, setModelSource);
-
 /**
  * Returns the mapped source for a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getModelSource);
-
 /**
  * Sets the mapped schema for a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, setModelSchema);
-
 /**
  * Returns the mapped schema for a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getModelSchema);
-
 /**
  * Sets both write and read connection service for a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, setConnectionService);
-
 /**
  * Sets read connection service for a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, setReadConnectionService);
-
 /**
  * Returns the connection service name used to read data related to a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getReadConnectionService);
-
 /**
  * Sets write connection service for a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, setWriteConnectionService);
-
 /**
  * Returns the connection service name used to write data related to a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getWriteConnectionService);
-
 /**
  * Returns the connection to read data related to a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getReadConnection);
-
 /**
  * Returns the connection to write data related to a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getWriteConnection);
-
 /**
  * Check of a model is already initialized
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, isInitialized);
-
 /**
  * Get last initialized model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getLastInitialized);
-
 /**
  * Loads a model throwing an exception if it doesn't exist
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, load);
-
 /**
  * Setup a 1-1 relation between two models
  *
@@ -111,7 +96,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, load);
  * @return  \Phalcon\Mvc\Model\RelationInterface
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, addHasOne);
-
 /**
  * Setup a relation reverse 1-1  between two models
  *
@@ -123,7 +107,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, addHasOne);
  * @return 	\Phalcon\Mvc\Model\RelationInterface
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, addBelongsTo);
-
 /**
  * Setup a relation 1-n between two models
  *
@@ -135,7 +118,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, addBelongsTo);
  * @return 	\Phalcon\Mvc\Model\RelationInterface
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, addHasMany);
-
 /**
  * Checks whether a model has a belongsTo relation with another model
  *
@@ -144,7 +126,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, addHasMany);
  * @return 	boolean
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, existsBelongsTo);
-
 /**
  * Checks whether a model has a hasMany relation with another model
  *
@@ -153,7 +134,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, existsBelongsTo);
  * @return 	boolean
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, existsHasMany);
-
 /**
  * Checks whether a model has a hasOne relation with another model
  *
@@ -162,7 +142,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, existsHasMany);
  * @return 	boolean
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, existsHasOne);
-
 /**
  * Gets belongsTo related records from a model
  *
@@ -174,7 +153,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, existsHasOne);
  * @return \Phalcon\Mvc\Model\ResultsetInterface
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getBelongsToRecords);
-
 /**
  * Gets hasMany related records from a model
  *
@@ -186,7 +164,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getBelongsToRecords);
  * @return \Phalcon\Mvc\Model\ResultsetInterface
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getHasManyRecords);
-
 /**
  * Gets belongsTo related records from a model
  *
@@ -198,7 +175,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getHasManyRecords);
  * @return \Phalcon\Mvc\Model\ResultsetInterface
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getHasOneRecords);
-
 /**
  * Gets belongsTo relations defined on a model
  *
@@ -206,7 +182,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getHasOneRecords);
  * @return array
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getBelongsTo);
-
 /**
  * Gets hasMany relations defined on a model
  *
@@ -214,7 +189,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getBelongsTo);
  * @return array
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getHasMany);
-
 /**
  * Gets hasOne relations defined on a model
  *
@@ -222,7 +196,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getHasMany);
  * @return array
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getHasOne);
-
 /**
  * Gets hasOne relations defined on a model
  *
@@ -230,7 +203,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getHasOne);
  * @return array
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getHasOneAndHasMany);
-
 /**
  * Query all the relationships defined on a model
  *
@@ -238,7 +210,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getHasOneAndHasMany);
  * @return \Phalcon\Mvc\Model\RelationInterface[]
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getRelations);
-
 /**
  * Query the relations between two models
  *
@@ -247,7 +218,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getRelations);
  * @return array
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getRelationsBetween);
-
 /**
  * Creates a Phalcon\Mvc\Model\Query without execute it
  *
@@ -255,7 +225,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getRelationsBetween);
  * @return \Phalcon\Mvc\Model\QueryInterface
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, createQuery);
-
 /**
  * Creates a Phalcon\Mvc\Model\Query and execute it
  *
@@ -265,7 +234,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, createQuery);
  * @return \Phalcon\Mvc\Model\QueryInterface
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, executeQuery);
-
 /**
  * Creates a Phalcon\Mvc\Model\Query\Builder
  *
@@ -273,12 +241,10 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, executeQuery);
  * @return \Phalcon\Mvc\Model\Query\BuilderInterface
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, createBuilder);
-
 /**
  * Binds a behavior to a model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, addBehavior);
-
 /**
  * Receives events generated in the models and dispatches them to an events-manager if available
  * Notify the behaviors that are listening in the model
@@ -287,7 +253,6 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, addBehavior);
  * @param \Phalcon\Mvc\ModelInterface model
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, notifyEvent);
-
 /**
  * Dispatch an event to the listeners and behaviors
  * This method expects that the endpoint listeners/behaviors returns true
@@ -299,14 +264,12 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, notifyEvent);
  * @return boolean
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, missingMethod);
-
 /**
  * Returns the last query created or executed in the models manager
  *
  * @return \Phalcon\Mvc\Model\QueryInterface
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getLastQuery);
-
 /**
  * Returns a relation by its alias
  *
@@ -315,4 +278,3 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getLastQuery);
  * @return \Phalcon\Mvc\Model\Relation
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_ManagerInterface, getRelationByAlias);
-

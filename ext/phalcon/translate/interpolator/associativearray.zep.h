@@ -5,8 +5,8 @@ ZEPHIR_INIT_CLASS(Phalcon_Translate_Interpolator_AssociativeArray);
 
 PHP_METHOD(Phalcon_Translate_Interpolator_AssociativeArray, replacePlaceholders);
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_translate_interpolator_associativearray_replaceplaceholders, 0, 0, 1)
-	ZEND_ARG_INFO(0, translation)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_translate_interpolator_associativearray_replaceplaceholders, 0, 1, IS_STRING, 0)
+	ZEND_ARG_TYPE_INFO(0, translation, IS_STRING, 0)
 	ZEND_ARG_INFO(0, placeholders)
 ZEND_END_ARG_INFO()
 

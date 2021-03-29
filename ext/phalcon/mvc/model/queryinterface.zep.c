@@ -32,7 +32,6 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Model_QueryInterface) {
  * @return array
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_QueryInterface, parse);
-
 /**
  * Sets the cache parameters of the query
  *
@@ -40,14 +39,12 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_QueryInterface, parse);
  * @return \Phalcon\Mvc\Model\Query
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_QueryInterface, cache);
-
 /**
  * Returns the current cache options
  *
  * @param array
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_QueryInterface, getCacheOptions);
-
 /**
  * Tells to the query if only the first row in the resultset must be returned
  *
@@ -55,14 +52,12 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_QueryInterface, getCacheOptions);
  * @return \Phalcon\Mvc\Model\Query
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_QueryInterface, setUniqueRow);
-
 /**
  * Check if the query is programmed to get only the first row in the resultset
  *
  * @return boolean
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_QueryInterface, getUniqueRow);
-
 /**
  * Executes a parsed PHQL statement
  *
@@ -71,4 +66,3 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_QueryInterface, getUniqueRow);
  * @return mixed
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_QueryInterface, execute);
-

@@ -5,7 +5,7 @@ ZEPHIR_INIT_CLASS(Phalcon_Session_Factory);
 
 PHP_METHOD(Phalcon_Session_Factory, load);
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_session_factory_load, 0, 0, 1)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_session_factory_load, 0, 1, Phalcon\\Session\\AdapterInterface, 0)
 	ZEND_ARG_INFO(0, config)
 ZEND_END_ARG_INFO()
 

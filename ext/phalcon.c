@@ -7,11 +7,6 @@
 
 #include <php.h>
 
-// TODO: Deprecated. Will be removed in future
-#if PHP_VERSION_ID < 50500
-#include <locale.h>
-#endif
-
 #include "php_ext.h"
 #include "phalcon.h"
 
@@ -453,23 +448,8 @@ PHP_INI_END()
 
 static PHP_MINIT_FUNCTION(phalcon)
 {
-// TODO: Deprecated. Will be removed in future
-#if PHP_VERSION_ID < 50500
-	char* old_lc_all = setlocale(LC_ALL, NULL);
-	if (old_lc_all) {
-		size_t len = strlen(old_lc_all);
-		char *tmp  = calloc(len+1, 1);
-		if (UNEXPECTED(!tmp)) {
-			return FAILURE;
-		}
-
-		memcpy(tmp, old_lc_all, len);
-		old_lc_all = tmp;
-	}
-
-	setlocale(LC_ALL, "C");
-#endif
 	REGISTER_INI_ENTRIES();
+	zephir_module_init();
 	ZEPHIR_INIT(Phalcon_Di_InjectionAwareInterface);
 	ZEPHIR_INIT(Phalcon_Events_EventsAwareInterface);
 	ZEPHIR_INIT(Phalcon_Validation_ValidatorInterface);
@@ -869,12 +849,6 @@ static PHP_MINIT_FUNCTION(phalcon)
 	ZEPHIR_INIT(phalcon_1__closure);
 	ZEPHIR_INIT(phalcon_2__closure);
 	
-
-// TODO: Deprecated. Will be removed in future
-#if PHP_VERSION_ID < 50500
-	setlocale(LC_ALL, old_lc_all);
-	free(old_lc_all);
-#endif
 	return SUCCESS;
 }
 
@@ -882,7 +856,7 @@ static PHP_MINIT_FUNCTION(phalcon)
 static PHP_MSHUTDOWN_FUNCTION(phalcon)
 {
 	
-	zephir_deinitialize_memory(TSRMLS_C);
+	zephir_deinitialize_memory();
 	UNREGISTER_INI_ENTRIES();
 	return SUCCESS;
 }
@@ -891,15 +865,9 @@ static PHP_MSHUTDOWN_FUNCTION(phalcon)
 /**
  * Initialize globals on each request or each thread started
  */
-static void php_zephir_init_globals(zend_phalcon_globals *phalcon_globals TSRMLS_DC)
+static void php_zephir_init_globals(zend_phalcon_globals *phalcon_globals)
 {
 	phalcon_globals->initialized = 0;
-
-	/* Memory options */
-	phalcon_globals->active_memory = NULL;
-
-	/* Virtual Symbol Tables */
-	phalcon_globals->active_symbol_table = NULL;
 
 	/* Cache Enabled */
 	phalcon_globals->cache_enabled = 1;
@@ -935,18 +903,18 @@ static void php_zephir_init_globals(zend_phalcon_globals *phalcon_globals TSRMLS
 /**
  * Initialize globals only on each thread started
  */
-static void php_zephir_init_module_globals(zend_phalcon_globals *phalcon_globals TSRMLS_DC)
+static void php_zephir_init_module_globals(zend_phalcon_globals *phalcon_globals)
 {
 	
 }
 
 static PHP_RINIT_FUNCTION(phalcon)
 {
-	zend_phalcon_globals *phalcon_globals_ptr = ZEPHIR_VGLOBAL;
+	zend_phalcon_globals *phalcon_globals_ptr;
+	phalcon_globals_ptr = ZEPHIR_VGLOBAL;
 
-	php_zephir_init_globals(phalcon_globals_ptr TSRMLS_CC);
-	//zephir_init_interned_strings(TSRMLS_C);
-	zephir_initialize_memory(phalcon_globals_ptr TSRMLS_CC);
+	php_zephir_init_globals(phalcon_globals_ptr);
+	zephir_initialize_memory(phalcon_globals_ptr);
 
 	
 	return SUCCESS;
@@ -954,8 +922,8 @@ static PHP_RINIT_FUNCTION(phalcon)
 
 static PHP_RSHUTDOWN_FUNCTION(phalcon)
 {
-	phalcon_orm_destroy_cache(TSRMLS_C);
-	zephir_deinitialize_memory(TSRMLS_C);
+	phalcon_orm_destroy_cache();
+	zephir_deinitialize_memory();
 	return SUCCESS;
 }
 
@@ -980,8 +948,12 @@ static PHP_MINFO_FUNCTION(phalcon)
 
 static PHP_GINIT_FUNCTION(phalcon)
 {
-	php_zephir_init_globals(phalcon_globals TSRMLS_CC);
-	php_zephir_init_module_globals(phalcon_globals TSRMLS_CC);
+#if defined(COMPILE_DL_PHALCON) && defined(ZTS)
+	ZEND_TSRMLS_CACHE_UPDATE();
+#endif
+
+	php_zephir_init_globals(phalcon_globals);
+	php_zephir_init_module_globals(phalcon_globals);
 }
 
 static PHP_GSHUTDOWN_FUNCTION(phalcon)
@@ -995,10 +967,15 @@ zend_function_entry php_phalcon_functions[] = {
 
 };
 
+static const zend_module_dep php_phalcon_deps[] = {
+	
+	ZEND_MOD_END
+};
+
 zend_module_entry phalcon_module_entry = {
 	STANDARD_MODULE_HEADER_EX,
 	NULL,
-	NULL,
+	php_phalcon_deps,
 	PHP_PHALCON_EXTNAME,
 	php_phalcon_functions,
 	PHP_MINIT(phalcon),
@@ -1022,6 +999,10 @@ zend_module_entry phalcon_module_entry = {
 	STANDARD_MODULE_PROPERTIES_EX
 };
 
+/* implement standard "stub" routine to introduce ourselves to Zend */
 #ifdef COMPILE_DL_PHALCON
+# ifdef ZTS
+ZEND_TSRMLS_CACHE_DEFINE()
+# endif
 ZEND_GET_MODULE(phalcon)
 #endif

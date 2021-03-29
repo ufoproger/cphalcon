@@ -44,6 +44,7 @@ lemon
 
 .libs/
 .temp/
+.zephir/
 autom4te.cache/
 /vendor/
 ide/

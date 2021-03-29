@@ -6,7 +6,7 @@ ZEPHIR_INIT_CLASS(Phalcon_Cli_Console);
 PHP_METHOD(Phalcon_Cli_Console, addModules);
 PHP_METHOD(Phalcon_Cli_Console, handle);
 PHP_METHOD(Phalcon_Cli_Console, setArgument);
-zend_object_value zephir_init_properties_Phalcon_Cli_Console(zend_class_entry *class_type TSRMLS_DC);
+zend_object *zephir_init_properties_Phalcon_Cli_Console(zend_class_entry *class_type);
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_cli_console_addmodules, 0, 0, 1)
 	ZEND_ARG_ARRAY_INFO(0, modules, 0)
@@ -16,10 +16,13 @@ ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_cli_console_handle, 0, 0, 0)
 	ZEND_ARG_ARRAY_INFO(0, arguments, 1)
 ZEND_END_ARG_INFO()
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_cli_console_setargument, 0, 0, 0)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_cli_console_setargument, 0, 0, Phalcon\\Cli\\Console, 0)
 	ZEND_ARG_ARRAY_INFO(0, arguments, 1)
-	ZEND_ARG_INFO(0, str)
-	ZEND_ARG_INFO(0, shift)
+	ZEND_ARG_TYPE_INFO(0, str, _IS_BOOL, 0)
+	ZEND_ARG_TYPE_INFO(0, shift, _IS_BOOL, 0)
+ZEND_END_ARG_INFO()
+
+ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_cli_console_zephir_init_properties_phalcon_cli_console, 0, 0, 0)
 ZEND_END_ARG_INFO()
 
 ZEPHIR_INIT_FUNCS(phalcon_cli_console_method_entry) {

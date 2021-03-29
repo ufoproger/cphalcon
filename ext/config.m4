@@ -9,7 +9,7 @@ if test "$PHP_PHALCON" = "yes"; then
 	fi
 
 	AC_DEFINE(HAVE_PHALCON, 1, [Whether you have Phalcon])
-	phalcon_sources="phalcon.c kernel/main.c kernel/memory.c kernel/exception.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/string.c kernel/fcall.c kernel/extended/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/math.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/time.c kernel/exit.c phalcon/di/injectionawareinterface.zep.c
+	phalcon_sources="phalcon.c kernel/main.c kernel/memory.c kernel/exception.c kernel/debug.c kernel/backtrace.c kernel/object.c kernel/array.c kernel/string.c kernel/fcall.c kernel/require.c kernel/file.c kernel/operators.c kernel/math.c kernel/concat.c kernel/variables.c kernel/filter.c kernel/iterator.c kernel/time.c kernel/exit.c phalcon/di/injectionawareinterface.zep.c
 	phalcon/exception.zep.c
 	phalcon/events/eventsawareinterface.zep.c
 	phalcon/validation/validatorinterface.zep.c
@@ -417,6 +417,10 @@ if test "$PHP_PHALCON" = "yes"; then
 	phalcon/assets/filters/cssminifier.c
 	phalcon/mvc/url/utils.c"
 	PHP_NEW_EXTENSION(phalcon, $phalcon_sources, $ext_shared,, )
+	PHP_ADD_BUILD_DIR([$ext_builddir/kernel/])
+	for dir in "phalcon phalcon/acl phalcon/acl/adapter phalcon/annotations phalcon/annotations/adapter phalcon/application phalcon/assets phalcon/assets/filters phalcon/assets/inline phalcon/assets/resource phalcon/cache phalcon/cache/backend phalcon/cache/frontend phalcon/cli phalcon/cli/console phalcon/cli/dispatcher phalcon/cli/router phalcon/config phalcon/config/adapter phalcon/crypt phalcon/db phalcon/db/adapter phalcon/db/adapter/pdo phalcon/db/dialect phalcon/db/profiler phalcon/db/result phalcon/debug phalcon/di phalcon/di/factorydefault phalcon/di/service phalcon/escaper phalcon/events phalcon/factory phalcon/filter phalcon/flash phalcon/forms phalcon/forms/element phalcon/http phalcon/http/cookie phalcon/http/request phalcon/http/response phalcon/image phalcon/image/adapter phalcon/loader phalcon/logger phalcon/logger/adapter phalcon/logger/formatter phalcon/mvc phalcon/mvc/application phalcon/mvc/collection phalcon/mvc/collection/behavior phalcon/mvc/controller phalcon/mvc/dispatcher phalcon/mvc/micro phalcon/mvc/model phalcon/mvc/model/behavior phalcon/mvc/model/binder phalcon/mvc/model/metadata phalcon/mvc/model/metadata/strategy phalcon/mvc/model/query phalcon/mvc/model/resultset phalcon/mvc/model/transaction phalcon/mvc/model/validator phalcon/mvc/router phalcon/mvc/url phalcon/mvc/user phalcon/mvc/view phalcon/mvc/view/engine phalcon/mvc/view/engine/volt phalcon/paginator phalcon/paginator/adapter phalcon/queue phalcon/queue/beanstalk phalcon/security phalcon/session phalcon/session/adapter phalcon/tag phalcon/translate phalcon/translate/adapter phalcon/translate/interpolator phalcon/validation phalcon/validation/message phalcon/validation/validator"; do
+		PHP_ADD_BUILD_DIR([$ext_builddir/$dir])
+	done
 	PHP_SUBST(PHALCON_SHARED_LIBADD)
 
 	old_CPPFLAGS=$CPPFLAGS

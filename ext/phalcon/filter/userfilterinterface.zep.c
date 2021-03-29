@@ -29,4 +29,3 @@ ZEPHIR_INIT_CLASS(Phalcon_Filter_UserFilterInterface) {
  * Filters a value
  */
 ZEPHIR_DOC_METHOD(Phalcon_Filter_UserFilterInterface, filter);
-

@@ -14,6 +14,7 @@
 #include "kernel/main.h"
 #include "kernel/fcall.h"
 #include "kernel/memory.h"
+#include "kernel/object.h"
 
 
 /**
@@ -39,28 +40,52 @@ ZEPHIR_INIT_CLASS(Phalcon_Assets_Resource_Js) {
  */
 PHP_METHOD(Phalcon_Assets_Resource_Js, __construct) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
 	zephir_fcall_cache_entry *_0 = NULL;
-	zval *path, *local = NULL, *filter = NULL, *attributes = NULL, *_1;
+	zval *path, path_sub, *local = NULL, local_sub, *filter = NULL, filter_sub, *attributes = NULL, attributes_sub, __$true, __$null, _1;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&path_sub);
+	ZVAL_UNDEF(&local_sub);
+	ZVAL_UNDEF(&filter_sub);
+	ZVAL_UNDEF(&attributes_sub);
+	ZVAL_BOOL(&__$true, 1);
+	ZVAL_NULL(&__$null);
+	ZVAL_UNDEF(&_1);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 4)
+		Z_PARAM_ZVAL(path)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_ZVAL(local)
+		Z_PARAM_ZVAL(filter)
+		Z_PARAM_ZVAL(attributes)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 3, &path, &local, &filter, &attributes);
 
 	if (!local) {
-		local = ZEPHIR_GLOBAL(global_true);
+		local = &local_sub;
+		local = &__$true;
 	}
 	if (!filter) {
-		filter = ZEPHIR_GLOBAL(global_true);
+		filter = &filter_sub;
+		filter = &__$true;
 	}
 	if (!attributes) {
-		attributes = ZEPHIR_GLOBAL(global_null);
+		attributes = &attributes_sub;
+		attributes = &__$null;
 	}
 
 
-	ZEPHIR_INIT_VAR(_1);
-	ZVAL_STRING(_1, "js", ZEPHIR_TEMP_PARAM_COPY);
-	ZEPHIR_CALL_PARENT(NULL, phalcon_assets_resource_js_ce, getThis(), "__construct", &_0, 114, _1, path, local, filter, attributes);
-	zephir_check_temp_parameter(_1);
+	ZEPHIR_INIT_VAR(&_1);
+	ZVAL_STRING(&_1, "js");
+	ZEPHIR_CALL_PARENT(NULL, phalcon_assets_resource_js_ce, getThis(), "__construct", &_0, 0, &_1, path, local, filter, attributes);
 	zephir_check_call_status();
 	ZEPHIR_MM_RESTORE();
 

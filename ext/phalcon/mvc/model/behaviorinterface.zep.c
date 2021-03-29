@@ -29,7 +29,6 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Model_BehaviorInterface) {
  * This method receives the notifications from the EventsManager
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_BehaviorInterface, notify);
-
 /**
  * Calls a method when it's missing in the model
  *
@@ -38,4 +37,3 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_BehaviorInterface, notify);
  * @param array arguments
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_BehaviorInterface, missingMethod);
-

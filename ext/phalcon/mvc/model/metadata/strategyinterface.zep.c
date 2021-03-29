@@ -28,7 +28,6 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Model_MetaData_StrategyInterface) {
  * @return array
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_MetaData_StrategyInterface, getMetaData);
-
 /**
  * Read the model's column map, this can't be inferred
  *
@@ -38,4 +37,3 @@ ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_MetaData_StrategyInterface, getMetaData);
  * @todo Not implemented
  */
 ZEPHIR_DOC_METHOD(Phalcon_Mvc_Model_MetaData_StrategyInterface, getColumnMaps);
-

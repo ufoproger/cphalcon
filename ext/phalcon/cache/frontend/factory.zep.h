@@ -6,12 +6,12 @@ ZEPHIR_INIT_CLASS(Phalcon_Cache_Frontend_Factory);
 PHP_METHOD(Phalcon_Cache_Frontend_Factory, load);
 PHP_METHOD(Phalcon_Cache_Frontend_Factory, loadClass);
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_cache_frontend_factory_load, 0, 0, 1)
+ZEND_BEGIN_ARG_WITH_RETURN_OBJ_INFO_EX(arginfo_phalcon_cache_frontend_factory_load, 0, 1, Phalcon\\Cache\\FrontendInterface, 0)
 	ZEND_ARG_INFO(0, config)
 ZEND_END_ARG_INFO()
 
 ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_cache_frontend_factory_loadclass, 0, 0, 2)
-	ZEND_ARG_INFO(0, namespace)
+	ZEND_ARG_TYPE_INFO(0, namespace, IS_STRING, 0)
 	ZEND_ARG_INFO(0, config)
 ZEND_END_ARG_INFO()
 

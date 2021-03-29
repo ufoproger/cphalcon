@@ -5,7 +5,7 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Model_Validator_Exclusionin);
 
 PHP_METHOD(Phalcon_Mvc_Model_Validator_Exclusionin, validate);
 
-ZEND_BEGIN_ARG_INFO_EX(arginfo_phalcon_mvc_model_validator_exclusionin_validate, 0, 0, 1)
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_phalcon_mvc_model_validator_exclusionin_validate, 0, 1, _IS_BOOL, 0)
 	ZEND_ARG_OBJ_INFO(0, record, Phalcon\\Mvc\\EntityInterface, 0)
 ZEND_END_ARG_INFO()
 

@@ -49,11 +49,11 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Model_Query_Status) {
 
 	ZEPHIR_REGISTER_CLASS(Phalcon\\Mvc\\Model\\Query, Status, phalcon, mvc_model_query_status, phalcon_mvc_model_query_status_method_entry, 0);
 
-	zend_declare_property_null(phalcon_mvc_model_query_status_ce, SL("_success"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_mvc_model_query_status_ce, SL("_success"), ZEND_ACC_PROTECTED);
 
-	zend_declare_property_null(phalcon_mvc_model_query_status_ce, SL("_model"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_mvc_model_query_status_ce, SL("_model"), ZEND_ACC_PROTECTED);
 
-	zend_class_implements(phalcon_mvc_model_query_status_ce TSRMLS_CC, 1, phalcon_mvc_model_query_statusinterface_ce);
+	zend_class_implements(phalcon_mvc_model_query_status_ce, 1, phalcon_mvc_model_query_statusinterface_ce);
 	return SUCCESS;
 
 }
@@ -63,23 +63,40 @@ ZEPHIR_INIT_CLASS(Phalcon_Mvc_Model_Query_Status) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Query_Status, __construct) {
 
-	zval *success_param = NULL, *model = NULL;
+	zval *success_param = NULL, *model = NULL, model_sub, __$true, __$false, __$null;
 	zend_bool success;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 1, 1, &success_param, &model);
+	ZVAL_UNDEF(&model_sub);
+	ZVAL_BOOL(&__$true, 1);
+	ZVAL_BOOL(&__$false, 0);
+	ZVAL_NULL(&__$null);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 2)
+		Z_PARAM_BOOL(success)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_OBJECT_OF_CLASS_OR_NULL(model, phalcon_mvc_modelinterface_ce)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
+
+	zephir_fetch_params_without_memory_grow(1, 1, &success_param, &model);
 
 	success = zephir_get_boolval(success_param);
 	if (!model) {
-		model = ZEPHIR_GLOBAL(global_null);
+		model = &model_sub;
+		model = &__$null;
 	}
 
 
 	if (success) {
-		zephir_update_property_this(getThis(), SL("_success"), ZEPHIR_GLOBAL(global_true) TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, ZEND_STRL("_success"), &__$true);
 	} else {
-		zephir_update_property_this(getThis(), SL("_success"), ZEPHIR_GLOBAL(global_false) TSRMLS_CC);
+		zephir_update_property_zval(this_ptr, ZEND_STRL("_success"), &__$false);
 	}
-	zephir_update_property_this(getThis(), SL("_model"), model TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, ZEND_STRL("_model"), model);
 
 }
 
@@ -88,7 +105,9 @@ PHP_METHOD(Phalcon_Mvc_Model_Query_Status, __construct) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Query_Status, getModel) {
 
-	
+	zval *this_ptr = getThis();
+
+
 
 	RETURN_MEMBER(getThis(), "_model");
 
@@ -99,18 +118,23 @@ PHP_METHOD(Phalcon_Mvc_Model_Query_Status, getModel) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Query_Status, getMessages) {
 
-	zval *model = NULL;
+	zval model;
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&model);
+
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_OBS_VAR(model);
-	zephir_read_property_this(&model, this_ptr, SL("_model"), PH_NOISY_CC);
-	if (Z_TYPE_P(model) != IS_OBJECT) {
+	ZEPHIR_OBS_VAR(&model);
+	zephir_read_property(&model, this_ptr, ZEND_STRL("_model"), PH_NOISY_CC);
+	if (Z_TYPE_P(&model) != IS_OBJECT) {
 		array_init(return_value);
 		RETURN_MM();
 	}
-	ZEPHIR_RETURN_CALL_METHOD(model, "getmessages", NULL, 0);
+	ZEPHIR_RETURN_CALL_METHOD(&model, "getmessages", NULL, 0);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -121,7 +145,9 @@ PHP_METHOD(Phalcon_Mvc_Model_Query_Status, getMessages) {
  */
 PHP_METHOD(Phalcon_Mvc_Model_Query_Status, success) {
 
-	
+	zval *this_ptr = getThis();
+
+
 
 	RETURN_MEMBER(getThis(), "_success");
 

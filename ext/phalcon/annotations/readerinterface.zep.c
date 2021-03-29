@@ -29,9 +29,7 @@ ZEPHIR_INIT_CLASS(Phalcon_Annotations_ReaderInterface) {
  * Reads annotations from the class dockblocks, its methods and/or properties
  */
 ZEPHIR_DOC_METHOD(Phalcon_Annotations_ReaderInterface, parse);
-
 /**
  * Parses a raw doc block returning the annotations found
  */
 ZEPHIR_DOC_METHOD(Phalcon_Annotations_ReaderInterface, parseDocBlock);
-

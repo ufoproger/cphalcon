@@ -67,9 +67,9 @@ ZEPHIR_INIT_CLASS(Phalcon_Cache_Frontend_Base64) {
 
 	ZEPHIR_REGISTER_CLASS(Phalcon\\Cache\\Frontend, Base64, phalcon, cache_frontend_base64, phalcon_cache_frontend_base64_method_entry, 0);
 
-	zend_declare_property_null(phalcon_cache_frontend_base64_ce, SL("_frontendOptions"), ZEND_ACC_PROTECTED TSRMLS_CC);
+	zend_declare_property_null(phalcon_cache_frontend_base64_ce, SL("_frontendOptions"), ZEND_ACC_PROTECTED);
 
-	zend_class_implements(phalcon_cache_frontend_base64_ce TSRMLS_CC, 1, phalcon_cache_frontendinterface_ce);
+	zend_class_implements(phalcon_cache_frontend_base64_ce, 1, phalcon_cache_frontendinterface_ce);
 	return SUCCESS;
 
 }
@@ -81,16 +81,30 @@ ZEPHIR_INIT_CLASS(Phalcon_Cache_Frontend_Base64) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Base64, __construct) {
 
-	zval *frontendOptions = NULL;
+	zval *frontendOptions = NULL, frontendOptions_sub, __$null;
+	zval *this_ptr = getThis();
 
-	zephir_fetch_params(0, 0, 1, &frontendOptions);
+	ZVAL_UNDEF(&frontendOptions_sub);
+	ZVAL_NULL(&__$null);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(0, 1)
+		Z_PARAM_OPTIONAL
+		Z_PARAM_ZVAL(frontendOptions)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
+
+	zephir_fetch_params_without_memory_grow(0, 1, &frontendOptions);
 
 	if (!frontendOptions) {
-		frontendOptions = ZEPHIR_GLOBAL(global_null);
+		frontendOptions = &frontendOptions_sub;
+		frontendOptions = &__$null;
 	}
 
 
-	zephir_update_property_this(getThis(), SL("_frontendOptions"), frontendOptions TSRMLS_CC);
+	zephir_update_property_zval(this_ptr, ZEND_STRL("_frontendOptions"), frontendOptions);
 
 }
 
@@ -99,13 +113,18 @@ PHP_METHOD(Phalcon_Cache_Frontend_Base64, __construct) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Base64, getLifetime) {
 
-	zval *options = NULL, *lifetime = NULL;
+	zval options, lifetime;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&options);
+	ZVAL_UNDEF(&lifetime);
 
 
-	options = zephir_fetch_nproperty_this(this_ptr, SL("_frontendOptions"), PH_NOISY_CC);
-	if (Z_TYPE_P(options) == IS_ARRAY) {
-		if (zephir_array_isset_string_fetch(&lifetime, options, SS("lifetime"), 1 TSRMLS_CC)) {
-			RETURN_CTORW(lifetime);
+
+	zephir_read_property(&options, this_ptr, ZEND_STRL("_frontendOptions"), PH_NOISY_CC | PH_READONLY);
+	if (Z_TYPE_P(&options) == IS_ARRAY) {
+		if (zephir_array_isset_string_fetch(&lifetime, &options, SL("lifetime"), 1)) {
+			RETURN_CTORW(&lifetime);
 		}
 	}
 	RETURN_LONG(1);
@@ -117,7 +136,9 @@ PHP_METHOD(Phalcon_Cache_Frontend_Base64, getLifetime) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Base64, isBuffering) {
 
-	
+	zval *this_ptr = getThis();
+
+
 
 	RETURN_BOOL(0);
 
@@ -128,7 +149,9 @@ PHP_METHOD(Phalcon_Cache_Frontend_Base64, isBuffering) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Base64, start) {
 
-	
+	zval *this_ptr = getThis();
+
+
 
 
 }
@@ -140,7 +163,9 @@ PHP_METHOD(Phalcon_Cache_Frontend_Base64, start) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Base64, getContent) {
 
-	
+	zval *this_ptr = getThis();
+
+
 
 	RETURN_NULL();
 
@@ -151,7 +176,9 @@ PHP_METHOD(Phalcon_Cache_Frontend_Base64, getContent) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Base64, stop) {
 
-	
+	zval *this_ptr = getThis();
+
+
 
 
 }
@@ -161,15 +188,27 @@ PHP_METHOD(Phalcon_Cache_Frontend_Base64, stop) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Base64, beforeStore) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *data;
+	zval *data, data_sub;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&data_sub);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ZVAL(data)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &data);
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("base64_encode", NULL, 134, data);
+	ZEPHIR_RETURN_CALL_FUNCTION("base64_encode", NULL, 108, data);
 	zephir_check_call_status();
 	RETURN_MM();
 
@@ -180,15 +219,27 @@ PHP_METHOD(Phalcon_Cache_Frontend_Base64, beforeStore) {
  */
 PHP_METHOD(Phalcon_Cache_Frontend_Base64, afterRetrieve) {
 
+	zephir_method_globals *ZEPHIR_METHOD_GLOBALS_PTR = NULL;
 	zend_long ZEPHIR_LAST_CALL_STATUS;
-	zval *data;
+	zval *data, data_sub;
+	zval *this_ptr = getThis();
+
+	ZVAL_UNDEF(&data_sub);
+#if PHP_VERSION_ID >= 80000
+	bool is_null_true = 1;
+	ZEND_PARSE_PARAMETERS_START(1, 1)
+		Z_PARAM_ZVAL(data)
+	ZEND_PARSE_PARAMETERS_END();
+
+#endif
+
 
 	ZEPHIR_MM_GROW();
 	zephir_fetch_params(1, 1, 0, &data);
 
 
 
-	ZEPHIR_RETURN_CALL_FUNCTION("base64_decode", NULL, 135, data);
+	ZEPHIR_RETURN_CALL_FUNCTION("base64_decode", NULL, 109, data);
 	zephir_check_call_status();
 	RETURN_MM();
 
