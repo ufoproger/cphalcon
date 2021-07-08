@@ -94,7 +94,7 @@ class Stream extends Adapter
 	/**
 	 * Writes the log to the stream itself
 	 */
-	public function logInternal(string message, int type, int time, array context)
+	public function logInternal(string message, int type, int time, array! context = null)
 	{
 		var stream;
 

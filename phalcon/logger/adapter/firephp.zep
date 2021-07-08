@@ -63,7 +63,7 @@ class Firephp extends Adapter
 	/**
 	 * Writes the log to the stream itself
 	 */
-	public function logInternal(string message, int type, int time, array context) -> void
+	public function logInternal(string message, int type, int time, array! context = null) -> void
 	{
 		var chunk, format, chString, content, key, index;
 

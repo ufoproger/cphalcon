@@ -45,7 +45,7 @@ class Blackhole extends Adapter
 	/**
 	 * Writes the log to the blackhole
 	 */
-	public function logInternal(string message, int type, int time, array context) -> void
+	public function logInternal(string message, int type, int time, array! context = null) -> void
 	{
 	}
 
